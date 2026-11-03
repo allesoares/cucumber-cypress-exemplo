@@ -18,6 +18,7 @@ Funcionalidade: Cadastrar livros com diferentes massas de dados
       | Histórias de um verão    | Bruno Souza      | Romance    | 1          |
     Então devo ver a mensagem "Livro adicionado com sucesso!"
 
+@cadastro-livro
 Esquema do Cenário: Cadastrar livros usando esquema de dados
   Dado que não existe um livro com o título "<titulo>"
     Quando cadastro um livro com os seguintes dados:
