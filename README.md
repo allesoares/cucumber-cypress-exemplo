@@ -1,81 +1,42 @@
-# cucumber-cypress-exemplo -- Alexandre
+# Testes BDD com Cypress e Cucumber
 
-Exemplo de automação de testes usando Cypress com Cucumber para estudantes da EBAC.
+Neste projeto, pratiquei a escrita de cenários em Gherkin e a implementação dos steps com Cypress. Usei o Hub de Leitura para testar login e administração de livros, incluindo cadastro com tabelas de dados e esquema de cenário.
 
-## 📋 Pré-requisitos
+**Tecnologias:** Cypress, Cucumber, Gherkin e JavaScript.
 
-- Node.js (versão 14 ou superior)
-- npm ou yarn
-- Git
+## Cenários do exercício
 
-## 🚀 Como usar este projeto
+| Arquivo | O que verificar |
+| --- | --- |
+| [login.feature](cypress/e2e/login.feature) | Acesso válido e recusa de senha incorreta |
+| [admin-livros.feature](cypress/e2e/admin-livros.feature) | Cadastro, edição e exclusão de livros |
+| [admin-livros-massa.feature](cypress/e2e/admin-livros-massa.feature) | Cadastro com tabela de dados e exemplos diferentes |
 
-### 1. Clone o repositório
-```bash
-git clone https://github.com/EBAC-QE/cucumber-cypress-exemplo.git
-cd cucumber-cypress-exemplo
+As ações e validações estão em [step_definitions](cypress/support/step_definitions). O arquivo `teste.feature` mantém os exemplos de navegação no site do Cucumber usados em aula.
+
+## Como executar
+
+Tenha Node.js e npm instalados. Inicie o [Hub de Leitura integrado](https://github.com/EBAC-QE/hub-de-leitura-integrado) em `http://localhost:3000`, com os usuários de demonstração e o catálogo de aula.
+
+Na pasta deste projeto:
+
+```powershell
+npm ci
+npx cypress run --spec "cypress/e2e/login.feature,cypress/e2e/admin-livros.feature,cypress/e2e/admin-livros-massa.feature"
 ```
 
-### 2. Instale as dependências
-```bash
-npm install
+Para executar todos os exemplos, use `npm test`. Para acompanhar pela interface, use `npx cypress open`.
+
+Também é possível selecionar os cenários de cadastro pela tag:
+
+```powershell
+npx cypress run --env tags="@cadastro-livro"
 ```
 
-### 3. Execute os testes
-```bash
-# Executar testes em modo headless
-npx cypress run
+Os testes de administração criam, alteram e removem livros no ambiente de teste. Os arquivos `.feature` mostram os dados necessários para reproduzir cada cenário.
 
-# Executar testes com interface gráfica
-npx cypress open
-```
-# Excutar testes com tags
-```bash
-npx cypress run --env tags='@learn'
-```
+## Contexto
 
-## Testes de administração de livros
+Exercício desenvolvido por Alexandre Soares durante o curso da EBAC, com a aplicação e os exemplos fornecidos nas aulas.
 
-Os cenários de `cypress/e2e/admin-livros.feature` possuem steps em
-`cypress/support/step_definitions/admin-livros.steps.js`.
-
-1. Em outro terminal, entre em `C:\repositorio\hub-de-leitura-integrado` e execute `npm start`.
-2. Neste projeto, execute:
-
-```bash
-npx cypress run --spec "cypress/e2e/admin-livros.feature"
-```
-
-## Cadastro com massa de dados
-
-O arquivo `cypress/e2e/admin-livros-massa.feature` cadastra vários livros em um
-único cenário. 
-
-Com o Hub de Leitura iniciado em `http://localhost:3000`, execute:
-
-```bash
-npx cypress run --spec "cypress/e2e/admin-livros-massa.feature"
-```
-
-## Exercício BDD: login positivo e negativo
-
-O arquivo `cypress/e2e/login.feature` contém dois cenários independentes:
-login válido de administrador e recusa de acesso com senha incorreta.
-As definições ficam em `cypress/support/step_definitions/login.steps.js`.
-
-Com o Hub de Leitura iniciado em `http://localhost:3000`, execute:
-
-```bash
-npx cypress run --spec "cypress/e2e/login.feature"
-```
-
-
-## 🛠 Tecnologias utilizadas
-
-- **Cypress** - Framework de testes E2E
-- **Cucumber** - Ferramenta BDD para escrita de cenários
-- **JavaScript** - Linguagem de programação
-
-## 📚 Recursos de aprendizado
-
-Este projeto foi criado para fins educacionais da EBAC (Escola Britânica de Artes Criativas e Tecnologia).
+[Voltar ao portfólio](https://github.com/allesoares/qa-portfolio)
